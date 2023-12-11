@@ -30,17 +30,17 @@ def bot():
         print(telefone_final)
 
         #PEGA MENSAGEM DO CLIENTE
-        todas_as_msg = driver.find_elements(by=By.CLASS_NAME, value='_1Gy50')
+        todas_as_msg = driver.find_elements(by=By.CLASS_NAME, value='_21Ahp')
         todas_as_msg_texto = [e.text for e in todas_as_msg]
         msg = todas_as_msg_texto[-1]
         print(msg)
 
         #RESPONDER MENSAGEM DO CLIENTE
-        campo_de_texto = driver.find_element(by=By.XPATH, value='//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[2]')
+        campo_de_texto = driver.find_element(by=By.XPATH, value='//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]')
         campo_de_texto.click()
-        resposta = requests.get("http://localhost/bot/index.php", params={'msg': {msg}, 'telefone': {telefone_final}})
+        resposta = requests.get("http://localhost/ChatBot/index.php", params={'msg': {msg}, 'telefone': {telefone_final}})
         bot_resposta = resposta.text
-        time.sleep(3)
+        time.sleep(1)
         campo_de_texto.send_keys(bot_resposta, Keys.ENTER)
 
         #VOLTAR PARA CONTATO PADRÃO
@@ -53,8 +53,8 @@ def bot():
         acao_contato.perform()
 
     except:
-        print('buscando novas mensagens')
-        time.sleep(3)
+        # print('buscando novas mensagens')
+        time.sleep(1)
 
 while True:
     bot()
