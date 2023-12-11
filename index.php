@@ -4,7 +4,6 @@ $usuario = 'root';
 $senha = '';
 $banco = 'bot';
 $conn = mysqli_connect($servidor, $usuario, $senha, $banco);
-
 ?>
 
 <?php
@@ -82,7 +81,7 @@ if($status < 5){
 ?>
 
 <?php
-$sql = "INSERT INTO historico (telefone, cliente1, bot, data) VALUES ('$telefone_cliente', '$msg', '$resposta', '$data')";
+$sql = "INSERT INTO historico (telefone, msg_cliente, msg_bot, data) VALUES ('$telefone_cliente', '$msg', '$resposta', '$data')";
 $query = mysqli_query($conn, $sql);
 if(!$query){
 }else{
